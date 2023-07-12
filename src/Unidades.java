@@ -1,11 +1,23 @@
 public abstract class Unidades {
 
+    private String nome = " ";
     private int vida;
     private int dano;
-    private int defesa;
 
     public Unidades() {
     }
+
+    public void atacar(Unidades personagem){
+
+        if (((Escudeiro) personagem).isDefendendo()){
+            ((Escudeiro) personagem).setEscudoQuebrado(true);
+        }
+        else{
+            personagem.setVida(personagem.getVida()-this.getDano());
+        }
+    }
+    public abstract boolean opcoesDeAcaoSamurai(Jogadores atacante,Jogadores adversario);
+    public abstract boolean opcoesDeAcao(Unidades personagemAtacado);
 
     public int getVida() {
         return vida;
@@ -23,11 +35,12 @@ public abstract class Unidades {
         this.dano = dano;
     }
 
-    public int getDefesa() {
-        return defesa;
+
+    public String getNome() {
+        return nome;
     }
 
-    public void setDefesa(int defesa) {
-        this.defesa = defesa;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }
