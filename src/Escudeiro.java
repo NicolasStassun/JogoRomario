@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class Escudeiro extends Unidades{
 
-    private boolean escudoQuebrado = false;
+    private boolean escudoQuebrado = true;
     private boolean defendendo = false;
 
     public Escudeiro() {

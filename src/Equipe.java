@@ -70,10 +70,10 @@ public class Equipe {
             }
             if(personagem instanceof  Escudeiro){
                 if (((Escudeiro) personagem).isEscudoQuebrado()){
-                    System.out.println("O escudeiro possui um escudo");
+                    System.out.println("O escudeiro está com o escudo quebrado");
                 }
                 else{
-                    System.out.println("O escudeiro está com o escudo quebrado");
+                    System.out.println("O escudeiro possui um escudo");
                 }
             }
 
