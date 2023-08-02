@@ -1,13 +1,17 @@
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Main {
+
+    public static ArrayList<Jogadores> players = new ArrayList<>();
 
     public static Jogadores player1 = new Jogadores();
     public static Jogadores player2 = new Jogadores();
 
     public static void main(String[] args) {
 
-
+        players.add(player1);
+        players.add(player2);
 
         boolean equipeUmEscolhida = false;
         boolean equipeDoisEscolhida = false;
@@ -25,7 +29,7 @@ public class Main {
             switch (escolha) {
 
                 case 1:
-                    if (equipeUmEscolhida == true && equipeDoisEscolhida == true) {
+                    if (equipeUmEscolhida && equipeDoisEscolhida) {
                         jogar();
                     }
                     else {
@@ -77,7 +81,7 @@ public class Main {
             }
             opcaoAtacantePlayer1 = Integer.parseInt(JOptionPane.showInputDialog("Qual personagem você deseja escolher: "));
 
-            System.out.println("Esolha qual personagem deseja atacar");
+            System.out.println("Escolha qual personagem deseja atacar");
 
             for (int i = 0; i < 3; i++) {
 
@@ -89,17 +93,19 @@ public class Main {
 
             for (int i = 0; i < 3; i++) {
 
-                if(i == (opcaoAtacantePlayer1-1) && player1.getEquipe().getPersonagens()[opcaoAtacantePlayer1-1].getNome()!= "Samurai"){
+                if(i == (opcaoAtacantePlayer1-1) && !player1.getEquipe().getPersonagens()[opcaoAtacantePlayer1-1].getNome().equals("Samurai")){
                     player1.getEquipe().getPersonagens()[i].opcoesDeAcao(player2.getEquipe().getPersonagens()[opcaoAtacadoPlayer1-1]);
                     player2.getEquipe().vidaDaEquipe();
                 }
-                else if(i == (opcaoAtacantePlayer1-1) && player1.getEquipe().getPersonagens()[opcaoAtacantePlayer1-1].getNome() == "Samurai"){
-                    player1.getEquipe().getPersonagens()[i].opcoesDeAcaoSamurai(player1,player2);
+                else if(i == (opcaoAtacantePlayer1-1) && player1.getEquipe().getPersonagens()[opcaoAtacantePlayer1-1].getNome().equals("Samurai")){
+                    Samurai samurai = (Samurai) player1.getEquipe().getPersonagens()[i];
+                    samurai.opcoesDeAcaoSamurai(player1,player2);
                     player2.getEquipe().vidaDaEquipe();
                 }
 
             }
             derrota = analisaDerrota();
+
             //Player 2
 
             player2.getEquipe().mostrarStatus();
@@ -113,7 +119,7 @@ public class Main {
             }
             opcaoAtacantePlayer2 = Integer.parseInt(JOptionPane.showInputDialog("Qual personagem você deseja escolher: "));
 
-            System.out.println("Esolha qual personagem deseja atacar");
+            System.out.println("Escolha qual personagem deseja atacar");
 
             for (int i = 0; i < 3; i++) {
 
@@ -125,13 +131,15 @@ public class Main {
 
             for (int i = 0; i < 3; i++) {
 
-                if(i == (opcaoAtacantePlayer2-1) && player2.getEquipe().getPersonagens()[opcaoAtacantePlayer2-1].getNome()!= "Samurai"){
+                if(i == (opcaoAtacantePlayer2-1) && !player2.getEquipe().getPersonagens()[opcaoAtacantePlayer2-1].getNome().equals("Samurai")){
                     player2.getEquipe().getPersonagens()[i].opcoesDeAcao(player1.getEquipe().getPersonagens()[opcaoAtacadoPlayer2-1]);
                     player1.getEquipe().vidaDaEquipe();
                 }
-                else if(i == (opcaoAtacantePlayer2-1) && player2.getEquipe().getPersonagens()[opcaoAtacantePlayer2-1].getNome() == "Samurai"){
-                    player2.getEquipe().getPersonagens()[i].opcoesDeAcaoSamurai(player2,player1);
+                else if(i == (opcaoAtacantePlayer2-1) && player2.getEquipe().getPersonagens()[opcaoAtacantePlayer2-1].getNome().equals("Samurai")){
+                    Samurai samurai = (Samurai) player2.getEquipe().getPersonagens()[i];
+                    samurai.opcoesDeAcaoSamurai(player2,player1);
                     player1.getEquipe().vidaDaEquipe();
+
                 }
 
             }

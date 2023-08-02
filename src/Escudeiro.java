@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class Escudeiro extends Unidades{
 
-    private boolean escudoQuebrado = true;
+    private boolean escudoQuebrado = false;
     private boolean defendendo = false;
 
     public Escudeiro() {
@@ -12,11 +12,6 @@ public class Escudeiro extends Unidades{
         this.setVida(200);
         this.setDano(30);
 
-    }
-
-    @Override
-    public boolean opcoesDeAcaoSamurai(Jogadores atacante, Jogadores adversario) {
-        return false;
     }
 
     @Override

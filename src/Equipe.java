@@ -1,9 +1,6 @@
 import javax.swing.*;
-import java.util.Scanner;
 
 public class Equipe {
-
-    Scanner sc = new Scanner(System.in);
 
     private Unidades[][] equipe = new Unidades[3][3];
     private Unidades[] personagens = new Unidades[3];
@@ -15,30 +12,6 @@ public class Equipe {
 
     public void setVidaEquipe(int vidaEquipe) {
         this.vidaEquipe = vidaEquipe;
-    }
-
-    public void mostrarPossibilidades(){
-
-        for (Unidades personagem:
-                personagens) {
-            if (personagem instanceof Samurai){
-                JOptionPane.showMessageDialog(null, """
-                        1 - Atacar
-                        """);
-            }
-            if (personagem instanceof Arqueiro){
-                JOptionPane.showMessageDialog(null, """
-                        1 - Atacar
-                        """);
-            }
-            if (personagem instanceof Escudeiro){
-                JOptionPane.showMessageDialog(null, """
-                        1 - Atacar
-                        2 - Defender
-                        """);
-            }
-        }
-
     }
 
     public int vidaDaEquipe(){

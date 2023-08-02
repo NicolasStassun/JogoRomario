@@ -12,10 +12,7 @@ public class Arqueiro extends Unidades{
         this.setDano(50);
     }
 
-    @Override
-    public boolean opcoesDeAcaoSamurai(Jogadores atacante, Jogadores adversario) {
-        return false;
-    }
+
 
     @Override
     public boolean opcoesDeAcao(Unidades personagemAtacado){

@@ -16,7 +16,6 @@ public abstract class Unidades {
             personagem.setVida(personagem.getVida()-this.getDano());
         }
     }
-    public abstract boolean opcoesDeAcaoSamurai(Jogadores atacante,Jogadores adversario);
     public abstract boolean opcoesDeAcao(Unidades personagemAtacado);
 
     public int getVida() {

@@ -10,8 +10,15 @@ public class Samurai extends Unidades{
         this.setDano(80);
     }
 
-    @Override
     public boolean opcoesDeAcaoSamurai(Jogadores atacante,Jogadores adversario){
+
+        Jogadores jogadorAtivo;
+
+        Unidades unidade = Main.players.get(0).getEquipe().getEquipe()[0][0];
+        if (unidade == this){
+            jogadorAtivo = Main.players.get(0);
+        }
+
         int opcao = 0;
         Integer.parseInt(JOptionPane.showInputDialog("""
                 1 - Atacar
@@ -40,22 +47,21 @@ public class Samurai extends Unidades{
 
         for (int i = 0; i < jogadorNormal.getEquipe().getEquipe().length; i++) {
             for (int j = 0; j < jogadorNormal.getEquipe().getEquipe().length; j++) {
-                if(jogadorNormal.getEquipe().getEquipe()[i][j].getNome() == "Samurai"){
+                if(jogadorNormal.getEquipe().getEquipe()[i][j].getNome().equals("Samurai")){
 
                     linhaDeAtaque = i;
 
                 }
             }
         }
-        for (int i = 0; i < jogadorAdversario.getEquipe().getEquipe().length; i++) {
-            for (int j = 0; j < jogadorAdversario.getEquipe().getEquipe().length; j++) {
-                if (i == linhaDeAtaque){
-                    jogadorAdversario.getEquipe().getEquipe()[i][j].setVida(-this.getDano());
-                }
-            }
+
+        for (int j = 0; j < jogadorAdversario.getEquipe().getEquipe().length; j++) {
+            jogadorAdversario.getEquipe().getEquipe()[linhaDeAtaque][j].setVida(-this.getDano());
         }
 
+
     }
+
 
 
 
