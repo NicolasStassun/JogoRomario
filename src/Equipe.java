@@ -85,7 +85,6 @@ public class Equipe {
     public void adicionarUnidades(){
 
         for (int i = 0; i < 3; i++) {
-
             int qualPersonagem = Integer.parseInt(JOptionPane.showInputDialog(null, """
                     Escolha um personagem:
                     1 - Samurai
@@ -93,72 +92,109 @@ public class Equipe {
                     3 - Arqueiro
                     """));
 
-            this.desenhaEquipe();
+            if (qualPersonagem >= 1 && qualPersonagem <= 3){
+                this.desenhaEquipe();
+
+                switch (qualPersonagem) {
+
+                    case 1:
+
+                        Samurai samurai = new Samurai();
+
+                        int posicaoXsamurai = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao X de 1 - 3"));
+
+                        int posicaoYsamurai = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao Y de 1 - 3"));
+
+                        if((posicaoYsamurai <=3 && posicaoYsamurai >=1) && (posicaoXsamurai <=3 && posicaoXsamurai >=1)){
+                            if (equipe[posicaoYsamurai-1][posicaoXsamurai-1] == null){
+
+                                equipe[posicaoYsamurai-1][posicaoXsamurai-1] = samurai;
+                                personagens[i] = samurai;
+
+                                this.desenhaEquipe();
+
+                            }
+                            else {
+                                JOptionPane.showMessageDialog(null, "Posição já ocupada");
+                                i -= 1;
+                            }
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "Posição inválida");
+                            i -= 1;
+                        }
 
 
-            switch (qualPersonagem) {
+                        break;
 
-                case 1:
+                    case 2:
 
-                    Samurai samurai = new Samurai();
+                        Escudeiro escudeiro = new Escudeiro();
 
-                    int posicaoXsamurai = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao X"));
+                        int posicaoXescudeiro = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao X de 1 - 3"));
 
-                    int posicaoYsamurai = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao Y"));
+                        int posicaoYescudeiro = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao Y de 1 - 3"));
 
-                    if (equipe[posicaoXsamurai][posicaoYsamurai] == null){
+                        if((posicaoYescudeiro <=3 && posicaoYescudeiro >=1) && (posicaoXescudeiro <=3 && posicaoXescudeiro >=1)){
+                            if (equipe[posicaoYescudeiro-1][posicaoXescudeiro-1] == null){
 
-                        equipe[posicaoXsamurai][posicaoYsamurai] = samurai;
-                        personagens[i] = samurai;
+                                equipe[posicaoYescudeiro-1][posicaoXescudeiro-1] = escudeiro;
+                                personagens[i] = escudeiro;
 
-                    }
-                    else {
-                        i -= 1;
-                    }
+                                this.desenhaEquipe();
 
-                    break;
+                            }
+                            else {
+                                JOptionPane.showMessageDialog(null, "Posição já ocupada");
+                                i -= 1;
+                            }
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "Posição inválida");
+                            i -= 1;
+                        }
 
-                case 2:
+                        break;
 
-                    Escudeiro escudeiro = new Escudeiro();
+                    case 3:
 
-                    int posicaoXescudeiro = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao X"));
+                        Arqueiro arqueiro = new Arqueiro();
 
-                    int posicaoYescudeiro = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao Y"));
+                        int posicaoXarqueiro = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao X de 1 - 3"));
 
-                    if (equipe[posicaoXescudeiro][posicaoYescudeiro] == null){
+                        int posicaoYarqueiro = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao Y de 1 - 3"));
 
-                        equipe[posicaoXescudeiro][posicaoYescudeiro] = escudeiro;
-                        personagens[i] = escudeiro;
+                        if ((posicaoYarqueiro <=3 && posicaoYarqueiro >=1) && (posicaoXarqueiro <=3 && posicaoXarqueiro >=1)){
+                            if (equipe[posicaoYarqueiro-1][posicaoXarqueiro-1] == null){
 
-                    }
-                    else {
-                        i -= 1;
-                    }
+                                equipe[posicaoYarqueiro-1][posicaoXarqueiro-1] = arqueiro;
+                                personagens[i] = arqueiro;
 
-                    break;
+                                this.desenhaEquipe();
 
-                case 3:
+                            }
+                            else {
+                                JOptionPane.showMessageDialog(null, "Posição já ocupada");
+                                i -= 1;
+                            }
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "Posição inválida");
+                            i -= 1;
+                        }
 
-                    Arqueiro arqueiro = new Arqueiro();
 
-                    int posicaoXarqueiro = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao X"));
 
-                    int posicaoYarqueiro = Integer.parseInt(JOptionPane.showInputDialog(null,"Informe a posicao Y"));
+                        break;
 
-                    if (equipe[posicaoXarqueiro][posicaoYarqueiro] == null){
-
-                        equipe[posicaoXarqueiro][posicaoYarqueiro] = arqueiro;
-                        personagens[i] = arqueiro;
-
-                    }
-                    else {
-                        i -= 1;
-                    }
-
-                    break;
-
+                }
             }
+            else {
+                JOptionPane.showMessageDialog(null, "Opção inválida, escolha um persomnage válido");
+                i -= 1;
+            }
+
+
         }
         this.vidaEquipe = vidaDaEquipe();
 

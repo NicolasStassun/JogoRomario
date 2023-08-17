@@ -25,43 +25,47 @@ public class Main {
                     3 - Definir equipe jogador 2
                     4 - Ver equipe jogador 1
                     5 - Ver equipe jogador 2
+                    6 - Sair
                     """));
-            switch (escolha) {
+            if (escolha <= 6 || escolha >= 1){
+                switch (escolha) {
 
-                case 1:
-                    if (equipeUmEscolhida && equipeDoisEscolhida) {
-                        jogar();
-                    }
-                    else {
-                        escolha = 0;
-                    }
-                    break;
-                case 2:
+                    case 1:
+                        if (equipeUmEscolhida && equipeDoisEscolhida) {
+                            jogar();
+                        }
+                        else {
+                            escolha = 0;
+                        }
+                        break;
+                    case 2:
 
-                    player1.setEquipe();
-                    equipeUmEscolhida = true;
-                    break;
+                        player1.setEquipe();
+                        equipeUmEscolhida = true;
+                        break;
 
-                case 3:
+                    case 3:
 
-                    player2.setEquipe();
-                    equipeDoisEscolhida = true;
-                    break;
+                        player2.setEquipe();
+                        equipeDoisEscolhida = true;
+                        break;
 
-                case 4:
+                    case 4:
 
-                    player1.getEquipe().desenhaEquipe();
+                        player1.getEquipe().desenhaEquipe();
 
-                    break;
-                case 5:
+                        break;
+                    case 5:
 
-                    player2.getEquipe().desenhaEquipe();
+                        player2.getEquipe().desenhaEquipe();
 
-                    break;
-                case 6:
+                        break;
+                    case 6:
 
-                    System.exit(0);
+                        System.exit(0);
+                }
             }
+
         }while (escolha != 1);
 
 
