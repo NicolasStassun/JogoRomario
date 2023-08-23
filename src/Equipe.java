@@ -14,25 +14,43 @@ public class Equipe {
         this.vidaEquipe = vidaEquipe;
     }
 
-    public int vidaDaEquipe(){
+    public void vidaDaEquipe(){
         int vidaTotal = 0;
 
         for (Unidades personagem:
              personagens) {
             vidaTotal += personagem.getVida();
         }
+        System.out.println(vidaTotal);
+        setVidaEquipe(vidaTotal);
+    }
 
-        return vidaTotal;
+    public boolean equipeEstaVazia(){
+        if (this.equipe[0][0] == null && this.equipe[0][1] == null && this.equipe[0][2] == null && this.equipe[1][0] == null && this.equipe[1][1] == null && this.equipe[1][2] == null && this.equipe[2][0] == null && this.equipe[2][1] == null && this.equipe[2][2] == null){
+           return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void resetaEquipe(){
+        for (int i = 0; i < this.equipe.length ; i++) {
+            for (int j = 0; j < this.equipe.length; j++) {
+                this.equipe[i][j] = null;
+            }
+        }
     }
 
     public void mostrarStatus(){
-
+        vidaDaEquipe();
         for (Unidades personagem:
              personagens) {
 
-            System.out.println(indexOf(personagens, personagem));
-            System.out.println(personagem.getNome());
-            System.out.println(personagem.getVida());
+            System.out.println(indexOf(personagens, personagem)+1+" - [");
+            System.out.println("Nome: "+personagem.getNome());
+            System.out.println("Vida: "+personagem.getVida());
+            System.out.println("]");
             if (personagem instanceof Arqueiro){
                 if (((Arqueiro) personagem).isArcoCarregado()){
                     System.out.println("O arco está carregado");
@@ -196,7 +214,7 @@ public class Equipe {
 
 
         }
-        this.vidaEquipe = vidaDaEquipe();
+        vidaDaEquipe();
 
     }
 

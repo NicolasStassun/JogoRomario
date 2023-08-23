@@ -39,15 +39,53 @@ public class Main {
                         }
                         break;
                     case 2:
+                        if (player1.getEquipe().equipeEstaVazia()==true){
+                            player1.setEquipe();
+                            equipeUmEscolhida = true;
+                        }
+                        else {
+                            int opcaoEdicaoEquipe = 0;
+                            opcaoEdicaoEquipe = Integer.parseInt(JOptionPane.showInputDialog("""
+                                Equipe já definida, deseja troca-la?
+                                1 - Sim
+                                2 - Não
+                                """));
+                            if (opcaoEdicaoEquipe == 1){
+                                player1.getEquipe().resetaEquipe();
+                                player1.setEquipe();
+                                equipeUmEscolhida = true;
+                            }
+                            else {
+                                break;
+                            }
 
-                        player1.setEquipe();
+                        }
                         equipeUmEscolhida = true;
                         break;
 
                     case 3:
+                        if (player2.getEquipe().equipeEstaVazia()==true){
+                            player2.setEquipe();
+                            equipeDoisEscolhida = true;
+                        }
+                        else {
+                            int opcaoEdicaoEquipe = 0;
+                            opcaoEdicaoEquipe = Integer.parseInt(JOptionPane.showInputDialog("""
+                                Equipe já definida, deseja troca-la?
+                                1 - Sim
+                                2 - Não
+                                """));
+                            if (opcaoEdicaoEquipe == 1){
+                                player2.getEquipe().resetaEquipe();
+                                player2.setEquipe();
+                                equipeDoisEscolhida = true;
+                            }
+                            else {
+                                break;
+                            }
 
-                        player2.setEquipe();
-                        equipeDoisEscolhida = true;
+                        }
+                        equipeUmEscolhida = true;
                         break;
 
                     case 4:

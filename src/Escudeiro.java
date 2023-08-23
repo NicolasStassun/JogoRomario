@@ -14,16 +14,19 @@ public class Escudeiro extends Unidades{
 
     }
 
+
+
     @Override
     public boolean opcoesDeAcao(Unidades personagemAtacado){
         int opcao = 0;
-        Integer.parseInt(JOptionPane.showInputDialog("""
+        opcao = Integer.parseInt(JOptionPane.showInputDialog("""
                 1 - Atacar
                 2 - Defender
                 3 - Sair
                 """));
 
         if (opcao == 1){
+            this.atacar(personagemAtacado);
         }
         else if (opcao == 2){
             this.defender();

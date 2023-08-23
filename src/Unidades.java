@@ -9,13 +9,19 @@ public abstract class Unidades {
 
     public void atacar(Unidades personagem){
 
-        if (((Escudeiro) personagem).isDefendendo()){
-            ((Escudeiro) personagem).setEscudoQuebrado(true);
+        if (personagem instanceof Escudeiro){
+            if (((Escudeiro) personagem).isDefendendo()){
+                ((Escudeiro) personagem).setEscudoQuebrado(true);
+            }
+            else{
+                personagem.setVida(personagem.getVida()-this.getDano());
+            }
         }
         else{
             personagem.setVida(personagem.getVida()-this.getDano());
         }
     }
+
     public abstract boolean opcoesDeAcao(Unidades personagemAtacado);
 
     public int getVida() {
@@ -23,7 +29,13 @@ public abstract class Unidades {
     }
 
     public void setVida(int vida) {
-        this.vida = vida;
+        if (vida > 0){
+            this.vida = vida;
+        }
+        else {
+            this.vida = 0;
+        }
+
     }
 
     public int getDano() {

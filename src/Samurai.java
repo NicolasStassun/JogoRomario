@@ -20,7 +20,7 @@ public class Samurai extends Unidades{
         }
 
         int opcao = 0;
-        Integer.parseInt(JOptionPane.showInputDialog("""
+        opcao = Integer.parseInt(JOptionPane.showInputDialog("""
                 1 - Atacar
                 2 - Sair
                 """));
@@ -47,16 +47,18 @@ public class Samurai extends Unidades{
 
         for (int i = 0; i < jogadorNormal.getEquipe().getEquipe().length; i++) {
             for (int j = 0; j < jogadorNormal.getEquipe().getEquipe().length; j++) {
-                if(jogadorNormal.getEquipe().getEquipe()[i][j].getNome().equals("Samurai")){
+                if (jogadorNormal.getEquipe().getEquipe()[i][j]!= null){
+                    if(jogadorNormal.getEquipe().getEquipe()[i][j].getNome().equals("Samurai")){
 
-                    linhaDeAtaque = i;
+                        linhaDeAtaque = i;
 
+                    }
                 }
             }
         }
 
         for (int j = 0; j < jogadorAdversario.getEquipe().getEquipe().length; j++) {
-            jogadorAdversario.getEquipe().getEquipe()[linhaDeAtaque][j].setVida(-this.getDano());
+            jogadorAdversario.getEquipe().getEquipe()[linhaDeAtaque][j].setVida(jogadorAdversario.getEquipe().getEquipe()[linhaDeAtaque][j].getVida()-this.getDano());
         }
 
 

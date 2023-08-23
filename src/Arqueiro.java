@@ -17,7 +17,7 @@ public class Arqueiro extends Unidades{
     @Override
     public boolean opcoesDeAcao(Unidades personagemAtacado){
         int opcao = 0;
-        Integer.parseInt(JOptionPane.showInputDialog("""
+        opcao = Integer.parseInt(JOptionPane.showInputDialog("""
                 1 - Atacar
                 2 - Carregar arco
                 3 - Sair
